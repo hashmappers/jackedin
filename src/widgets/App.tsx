@@ -57,7 +57,14 @@ export default class App extends declared(Widget) {
       this.map = map;
       this.view = new MapView({
         map: this.map,
-        container: element
+        container: element,
+        center: [-89.049, 38.485],
+        zoom: 4,
+        highlightOptions: {
+          color: "#ff642e",
+          haloOpacity: 1,
+          fillOpacity: 0.25
+        },
       });
     });
   }

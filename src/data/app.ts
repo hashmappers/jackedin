@@ -11,5 +11,5 @@ export const featureLayer = new FeatureLayer({
 });
 
 export const map = new EsriMap({
-  basemap: "streets"
+  basemap: "dark-gray"
 });
