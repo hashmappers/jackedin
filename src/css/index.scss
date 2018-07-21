@@ -28,6 +28,20 @@ header.top-nav {
   border-bottom: 1px solid $gray;
 }
 
+/* left-pane */
+left-pane.top-nav {
+  overflow: scroll;
+  z-index: 1;
+  background-color: $blue;
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  left: 0px;
+  font-weight: 400;
+  font-style: normal;
+  border-bottom: 1px solid $gray;
+}
+
 @media (max-width: 600px) {
   .toolbar-title {
     display: none;

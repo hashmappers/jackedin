@@ -16,6 +16,7 @@ import Widget from "esri/widgets/Widget";
 import AppViewModel, { AppParams } from "./App/AppViewModel";
 
 import { Header } from "./Header";
+import { LeftPane } from "./LeftPane";
 
 interface AppViewParams extends AppParams, esri.WidgetProperties {}
 
@@ -44,8 +45,8 @@ export default class App extends declared(Widget) {
     return (
       <div class={CSS.base}>
         {Header({ appName: this.appName })}
+        {LeftPane({})}
         <div class={CSS.webmap} bind={this} afterCreate={this.onAfterCreate} />
-        {Header({ appName: this.appName })}
       </div>
     );
   }
