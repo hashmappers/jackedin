@@ -1,15 +1,14 @@
-import FeatureLayer from "esri/layers/FeatureLayer";
+import StreamLayer from "esri/layers/StreamLayer";
 import EsriMap from "esri/Map";
 
-export const featureLayer = new FeatureLayer({
-  portalItem: {
-    id: "b234a118ab6b4c91908a1cf677941702"
-  },
-  outFields: ["NAME", "STATE_NAME", "VACANT", "HSE_UNITS"],
-  title: "U.S. counties",
-  opacity: 0.8
+var streamLayer = new StreamLayer({
+  url: "https://ps0002022.esri.com/server/rest/services/stream_service_twitter_test/StreamServer",
+  purgeOptions: {
+    displayCount: 1000
+  }
 });
 
 export const map = new EsriMap({
-  basemap: "dark-gray"
+  basemap: "dark-gray",
+  layers: [streamLayer]
 });

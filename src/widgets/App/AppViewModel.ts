@@ -1,6 +1,5 @@
 import Accessor from "esri/core/Accessor";
 import { whenOnce } from "esri/core/watchUtils";
-import FeatureLayer from "esri/layers/FeatureLayer";
 import EsriMap from "esri/Map";
 import MapView from "esri/views/MapView";
 import Expand from "esri/widgets/Expand";
@@ -25,8 +24,6 @@ class AppViewModel extends declared(Accessor) {
 
   @property() map: EsriMap;
 
-  @property() featureLayer: FeatureLayer;
-
   @property() view: MapView;
 
   constructor(params?: Partial<AppParams>) {
@@ -40,10 +37,6 @@ class AppViewModel extends declared(Accessor) {
       content: search
     });
     this.view.ui.add(expand, "top-right");
-
-    this.featureLayer.when(() => {
-      this.view.goTo({ target: this.featureLayer.fullExtent });
-    });
   }
 }
 

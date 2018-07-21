@@ -8,7 +8,6 @@ import {
 } from "esri/core/accessorSupport/decorators";
 import { tsx } from "esri/widgets/support/widget";
 
-import FeatureLayer from "esri/layers/FeatureLayer";
 import EsriMap from "esri/Map";
 import MapView from "esri/views/MapView";
 import Widget from "esri/widgets/Widget";
@@ -31,8 +30,6 @@ export default class App extends declared(Widget) {
 
   @aliasOf("viewModel.appName") appName: string;
 
-  @aliasOf("viewModel.featureLayer") featureLayer: FeatureLayer;
-
   @aliasOf("viewModel.map") map: EsriMap;
 
   @aliasOf("viewModel.view") view: __esri.MapView;
@@ -52,19 +49,13 @@ export default class App extends declared(Widget) {
   }
 
   private onAfterCreate(element: HTMLDivElement) {
-    import("./../data/app").then(({ featureLayer, map }) => {
-      this.featureLayer = featureLayer;
+    import("./../data/app").then(({ map }) => {
       this.map = map;
       this.view = new MapView({
         map: this.map,
         container: element,
         center: [-89.049, 38.485],
-        zoom: 4,
-        highlightOptions: {
-          color: "#ff642e",
-          haloOpacity: 1,
-          fillOpacity: 0.25
-        },
+        zoom: 4
       });
     });
   }
