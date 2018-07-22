@@ -1,10 +1,8 @@
 import EsriMap from "esri/Map";
 import StreamLayer from "esri/layers/StreamLayer";
 
-const calculateScore = (target: any) => {
-  const tfidfScore = (Math.random() * (1 - 0)).toFixed(3);
-  const locScore = (Math.random() * (1 - 0)).toFixed(3);
-  return `{polarity} This tweet has a TFIDF Score of ${tfidfScore} and a location score of ${locScore}`;
+const getScoreText = (target: any) => {
+  return `This tweet has a TFIDF Score of ${target.graphic.attribute.tfidfScore} and a location score of ${target.graphic.attribute.locScore}`;
 }
 
 const createUniqueValueInfos = () => {
@@ -37,7 +35,7 @@ const streamLayer = new StreamLayer({
   },
   popupTemplate: {
     title: "{text}",
-    content: calculateScore
+    content: getScoreText
   },
   renderer: {
     type: "unique-value",
