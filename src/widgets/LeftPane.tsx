@@ -17,7 +17,9 @@ esriConfig.request.corsEnabledServers.push("http://localhost:8080");
 esriRequest("http://localhost:8080/trends", {
   responseType: "json"
 }).then(function(response: any) {
-  trends = response.data[0].trends;
+  trends = response.data[0].trends
+    .filter(hashtag => !!hashtag.tweet_volume)
+    .sort((first, second) => second.tweet_volume - first.tweet_volume);
 });
 
 export const LeftPane = (props: LeftPaneProperties) => {

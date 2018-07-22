@@ -1,23 +1,18 @@
 import esri = __esri;
 
 import {
-  aliasOf,
   declared,
-  property,
   subclass
 } from "esri/core/accessorSupport/decorators";
 import { tsx } from "esri/widgets/support/widget";
 
-import EsriMap from "esri/Map";
 import MapView from "esri/views/MapView";
 import Widget from "esri/widgets/Widget";
-
-import AppViewModel, { AppParams } from "./App/AppViewModel";
 
 import { Header } from "./Header";
 import { LeftPane } from "./LeftPane";
 
-interface AppViewParams extends AppParams, esri.WidgetProperties {}
+interface AppViewParams extends esri.WidgetProperties {}
 
 const CSS = {
   base: "main",
@@ -26,14 +21,6 @@ const CSS = {
 
 @subclass("app.widgets.webmapview")
 export default class App extends declared(Widget) {
-  @property() viewModel = new AppViewModel();
-
-  @aliasOf("viewModel.appName") appName: string;
-
-  @aliasOf("viewModel.map") map: EsriMap;
-
-  @aliasOf("viewModel.view") view: __esri.MapView;
-
   constructor(params: Partial<AppViewParams>) {
     super(params);
   }
@@ -41,7 +28,7 @@ export default class App extends declared(Widget) {
   render() {
     return (
       <div class={CSS.base}>
-        {Header({ appName: this.appName })}
+        {Header({ appName: "#Hashmappers" })}
         {LeftPane({})}
         <div class={CSS.webmap} bind={this} afterCreate={this.onAfterCreate} />
       </div>
@@ -50,12 +37,19 @@ export default class App extends declared(Widget) {
 
   private onAfterCreate(element: HTMLDivElement) {
     import("./../data/app").then(({ map }) => {
-      this.map = map;
-      this.view = new MapView({
-        map: this.map,
+      new MapView({
+        map,
         container: element,
-        center: [-89.049, 38.485],
-        zoom: 4
+        center: [-118.2437, 34.0522],
+        zoom: 10,
+        popup: {
+          dockEnabled: true,
+          dockOptions: {
+            buttonEnabled: false,
+            breakpoint: false,
+            position: "bottom-right"
+          }
+        }
       });
     });
   }
