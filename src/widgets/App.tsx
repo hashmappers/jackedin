@@ -49,6 +49,11 @@ export default class App extends declared(Widget) {
             breakpoint: false,
             position: "bottom-right"
           }
+        },
+        highlightOptions: {
+          color: "#ff642e",
+          haloOpacity: 1,
+          fillOpacity: 0.25
         }
       });
     });
