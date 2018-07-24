@@ -1,5 +1,6 @@
 import EsriMap from "esri/Map";
 import StreamLayer from "esri/layers/StreamLayer";
+import FeatureLayer from "esri/layers/FeatureLayer";
 
 const getScoreText = (target: any) => {
   return `This tweet has a TFIDF Score of ${target.graphic.attribute.tfidfScore} and a location score of ${target.graphic.attribute.locScore}`;
@@ -28,6 +29,11 @@ const createUniqueValueInfos = () => {
   });
 }
 
+const featureLayer = new FeatureLayer({
+  url: "https://services8.arcgis.com/LLNIdHmmdjO2qQ5q/arcgis/rest/services/California_Subset/FeatureServer/0",
+  opacity: 0.2
+});
+
 const streamLayer = new StreamLayer({
   url: "https://ps0002022.esri.com/server/rest/services/stream-service-out-original2/StreamServer",
   purgeOptions: {
@@ -46,5 +52,5 @@ const streamLayer = new StreamLayer({
 
 export const map = new EsriMap({
   basemap: "dark-gray",
-  layers: [streamLayer]
+  layers: [featureLayer, streamLayer]
 });
