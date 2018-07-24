@@ -3,7 +3,7 @@ import StreamLayer from "esri/layers/StreamLayer";
 import FeatureLayer from "esri/layers/FeatureLayer";
 
 const getScoreText = (target: any) => {
-  return `This tweet has a TFIDF Score of ${target.graphic.attribute.tfidfScore} and a location score of ${target.graphic.attribute.locScore}`;
+  return `${target.graphic.attributes.polarity}${target.graphic.attributes.text}<div><b>We do not have data available for these hashtags</b></div>`;
 }
 
 const createUniqueValueInfos = () => {
@@ -22,6 +22,8 @@ const createUniqueValueInfos = () => {
     return {
       value: (i + 1) * 0.2,
       symbol: {
+        width: 50,
+        height: 50,
         type: "picture-marker",
         url: baseUrl + url
       }
@@ -30,8 +32,8 @@ const createUniqueValueInfos = () => {
 }
 
 const featureLayer = new FeatureLayer({
-  url: "https://services8.arcgis.com/LLNIdHmmdjO2qQ5q/arcgis/rest/services/California_Subset/FeatureServer/0",
-  opacity: 0.2
+  url: "http://ps0002022.esri.com/server/rest/services/Hosted/OnlyHashtaggedHexagons/FeatureServer/0",
+  opacity: 0.8
 });
 
 const streamLayer = new StreamLayer({
@@ -40,13 +42,17 @@ const streamLayer = new StreamLayer({
     displayCount: 1000
   },
   popupTemplate: {
-    title: "{text}",
+    title: "@{user_name}",
     content: getScoreText
   },
   renderer: {
-    type: "unique-value",
-    field: "polarity",
-    uniqueValueInfos: createUniqueValueInfos()
+    type: "simple",
+    symbol: {
+      type: "picture-marker",
+      url: "https://arcgis.github.io/arcgis-samples-javascript/sample-data/cat4.png",
+      width: 30,
+      height: 30
+    }
   }
 });
 

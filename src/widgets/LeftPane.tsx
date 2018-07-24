@@ -18,7 +18,7 @@ esriRequest("http://localhost:8080/trends", {
   responseType: "json"
 }).then(function(response: any) {
   trends = response.data[0].trends
-    .filter(hashtag => !!hashtag.tweet_volume)
+    //.filter(hashtag => !!hashtag.tweet_volume)
     .sort((first, second) => second.tweet_volume - first.tweet_volume);
 });
 

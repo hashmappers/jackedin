@@ -1,9 +1,6 @@
 import esri = __esri;
 
-import {
-  declared,
-  subclass
-} from "esri/core/accessorSupport/decorators";
+import { declared, subclass } from "esri/core/accessorSupport/decorators";
 import { tsx } from "esri/widgets/support/widget";
 
 import MapView from "esri/views/MapView";
@@ -40,8 +37,8 @@ export default class App extends declared(Widget) {
       new MapView({
         map,
         container: element,
-        center: [-118.2437, 34.0522],
-        zoom: 10,
+        center: [0, 30],
+        zoom: 3,
         popup: {
           dockEnabled: true,
           dockOptions: {
