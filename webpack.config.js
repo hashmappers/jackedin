@@ -77,7 +77,7 @@ module.exports = function(_, arg) {
       new ArcGISPlugin(),
 
       new HtmlWebPackPlugin({
-        title: "Hashmapper | JackedIn",
+        title: "#Hashmapper",
         template: "./src/index.ejs",
         filename: "./index.html",
         favicon: "./src/assets/favicon.ico",
@@ -101,9 +101,9 @@ module.exports = function(_, arg) {
       new HtmlWebpackInlineSourcePlugin(),
 
       new WebpackPwaManifest({
-        name: "Hashmapper | JackedIn",
-        short_name: "JackedIn",
-        description: "Hashmapper | JackedIn",
+        name: "#Hashmapper",
+        short_name: "#Hashmapper",
+        description: "#Hashmapper",
         background_color: "#0079c1",
         theme_color: "#0079c1",
         icons: [
