@@ -22,8 +22,8 @@ const createUniqueValueInfos = () => {
     return {
       value: (i + 1) * 0.2,
       symbol: {
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
         type: "picture-marker",
         url: baseUrl + url
       }

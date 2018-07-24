@@ -25,7 +25,7 @@ export default class App extends declared(Widget) {
   render() {
     return (
       <div class={CSS.base}>
-        {Header({ appName: "#Hashmappers" })}
+        {Header({ appName: "GoldMind" })}
         {LeftPane({})}
         <div class={CSS.webmap} bind={this} afterCreate={this.onAfterCreate} />
       </div>
@@ -43,7 +43,7 @@ export default class App extends declared(Widget) {
           dockEnabled: true,
           dockOptions: {
             buttonEnabled: false,
-            breakpoint: false,
+            //breakpoint: false,
             position: "bottom-right"
           }
         },

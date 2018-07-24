@@ -77,7 +77,7 @@ module.exports = function(_, arg) {
       new ArcGISPlugin(),
 
       new HtmlWebPackPlugin({
-        title: "#Hashmapper",
+        title: "GoldMind",
         template: "./src/index.ejs",
         filename: "./index.html",
         favicon: "./src/assets/favicon.ico",
@@ -101,9 +101,9 @@ module.exports = function(_, arg) {
       new HtmlWebpackInlineSourcePlugin(),
 
       new WebpackPwaManifest({
-        name: "#Hashmapper",
-        short_name: "#Hashmapper",
-        description: "#Hashmapper",
+        name: "GoldMind",
+        short_name: "GoldMind",
+        description: "GoldMind",
         background_color: "#0079c1",
         theme_color: "#0079c1",
         icons: [
