@@ -3,7 +3,7 @@ import StreamLayer from "esri/layers/StreamLayer";
 import FeatureLayer from "esri/layers/FeatureLayer";
 
 const getScoreText = (target: any) => {
-  return `${target.graphic.attributes.polarity}${target.graphic.attributes.text}<div><b>We do not have data available for these hashtags</b></div>`;
+  return `${target.graphic.attributes.text}<div><b>We do not have data available for these hashtags</b></div>`;
 }
 
 const createUniqueValueInfos = () => {
